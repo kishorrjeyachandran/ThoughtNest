@@ -2,101 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Body */
 body {
   @apply bg-white dark:bg-[#191919]
   text-black dark:text-white
   transition-colors duration-300;
-}
-
-/* Selection */
-::selection {
-  background: #d4d4d4;
-  color: black;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #d4d4d4;
-  border-radius: 999px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: #3a3a3a;
-}
-
-/* Tiptap */
-.ProseMirror {
-  outline: none;
-  min-height: 500px;
-  line-height: 1.9;
-}
-
-.ProseMirror h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-}
-
-.ProseMirror h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-top: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.ProseMirror p {
-  margin: 1rem 0;
-}
-
-.ProseMirror ul {
-  list-style: disc;
-  padding-left: 1.5rem;
-}
-
-.ProseMirror ol {
-  list-style: decimal;
-  padding-left: 1.5rem;
-}
-
-.ProseMirror blockquote {
-  border-left: 3px solid #d4d4d4;
-  padding-left: 1rem;
-  margin: 1.5rem 0;
-  color: #707070;
-}
-
-.dark .ProseMirror blockquote {
-  border-left: 3px solid #3a3a3a;
-  color: #9b9b9b;
-}
-
-.ProseMirror pre {
-  background: #f5f5f5;
-  padding: 1rem;
-  border-radius: 1rem;
-  overflow-x: auto;
-  margin: 1.5rem 0;
-}
-
-.dark .ProseMirror pre {
-  background: #222222;
-}
-
-.ProseMirror code {
-  font-family: monospace;
 }
