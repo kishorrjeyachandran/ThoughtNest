@@ -24,7 +24,10 @@ const app = express();
 // MIDDLEWARE
 app.use(
   cors({
-    origin: "*",
+    origin: [
+      "http://localhost:5173",
+      "https://thought-nest-blush.vercel.app",
+    ],
     credentials: true,
   })
 );
