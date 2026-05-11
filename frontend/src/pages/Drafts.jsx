@@ -20,7 +20,9 @@ import {
 } from "lucide-react";
 
 function Drafts() {
-  const { user } = useAuth();
+
+  const { user } =
+    useAuth();
 
   const [posts, setPosts] =
     useState([]);
@@ -32,31 +34,31 @@ function Drafts() {
     fetchDrafts();
   }, []);
 
+  // FETCH DRAFTS
   const fetchDrafts =
     async () => {
+
       try {
+
         const { data } =
           await API.get(
-            "/posts/user/me",
+            "/posts/drafts",
             {
               headers: {
-                Authorization: `Bearer ${user.token}`,
+                Authorization:
+                  `Bearer ${user.token}`,
               },
             }
           );
 
-        const drafts =
-          data.filter(
-            (post) =>
-              post.isDraft
-          );
-
-        setPosts(drafts);
+        setPosts(data);
 
       } catch (error) {
+
         console.log(error);
 
       } finally {
+
         setLoading(false);
       }
     };
@@ -71,9 +73,7 @@ function Drafts() {
 
           <div className="flex items-center gap-3">
 
-            <FilePenLine
-              size={36}
-            />
+            <FilePenLine size={36} />
 
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
               Drafts
@@ -135,24 +135,48 @@ function Drafts() {
                   "
                 >
 
+                  {/* Title */}
                   <h2 className="text-2xl font-semibold">
+
                     {post.title ||
                       "Untitled Draft"}
+
                   </h2>
 
+                  {/* Content */}
                   <p
                     className="
                       text-[#707070]
                       dark:text-[#9B9B9B]
                       mt-3
                       line-clamp-2
+                      leading-7
                     "
                   >
+
                     {post.content
                       ?.replace(
                         /<[^>]+>/g,
                         ""
                       )}
+
+                  </p>
+
+                  {/* Date */}
+                  <p
+                    className="
+                      text-sm
+                      text-[#909090]
+                      dark:text-[#707070]
+                      mt-4
+                    "
+                  >
+
+                    Last edited • {" "}
+                    {new Date(
+                      post.updatedAt
+                    ).toLocaleDateString()}
+
                   </p>
 
                 </article>

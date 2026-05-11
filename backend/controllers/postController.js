@@ -2,19 +2,20 @@ import Post from "../models/Post.js";
 
 
 // CREATE POST
-export const createPost = async (req, res) => {
+export const createPost = async (
+  req,
+  res
+) => {
   try {
     const {
       title,
       content,
-      coverImage,
       isDraft,
     } = req.body;
 
     const post = await Post.create({
       title,
       content,
-      coverImage,
       isDraft,
       author: req.user._id,
     });
@@ -153,6 +154,27 @@ export const getUserPosts = async (req, res) => {
     });
   }
 };
+
+export const getDraftPosts =
+  async (req, res) => {
+    try {
+
+      const posts =
+        await Post.find({
+          author: req.user._id,
+          isDraft: true,
+        }).sort({
+          createdAt: -1,
+        });
+
+      res.json(posts);
+
+    } catch (error) {
+      res.status(500).json({
+        message: error.message,
+      });
+    }
+  };
 
 export const searchPosts = async (req, res) => {
   try {

@@ -174,7 +174,18 @@ function History() {
                         line-clamp-3
                       "
                     >
-                      {post.content}
+                      <p
+  className="
+    text-[#707070]
+    dark:text-[#9B9B9B]
+    mt-3
+    leading-7
+    line-clamp-2
+  "
+>
+  {post.content
+    ?.replace(/<[^>]+>/g, "")}
+</p>
                     </p>
 
                   </div>

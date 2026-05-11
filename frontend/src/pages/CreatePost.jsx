@@ -242,6 +242,31 @@ function CreatePost() {
       }
     };
 
+    const saveDraft = async () => {
+  try {
+
+    await API.post(
+      "/posts",
+      {
+        title,
+        content,
+        isDraft: true,
+      },
+      {
+        headers: {
+          Authorization:
+            `Bearer ${userInfo.token}`,
+        },
+      }
+    );
+
+    alert("Draft saved");
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+
   return (
     <Layout title="New Post">
 

@@ -265,7 +265,18 @@ function Trending() {
                           line-clamp-3
                         "
                       >
-                        {post.content}
+                        <div
+  className="
+    text-[#707070]
+    dark:text-[#9B9B9B]
+    mt-4
+    leading-8
+    line-clamp-2
+  "
+  dangerouslySetInnerHTML={{
+    __html: post.content,
+  }}
+/>
                       </p>
 
                     </div>

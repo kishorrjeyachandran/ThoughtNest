@@ -6,9 +6,7 @@ import {
   useParams,
 } from "react-router-dom";
 
-import ReactMarkdown from "react-markdown";
 
-import remarkGfm from "remark-gfm";
 
 import {
   Heart,
@@ -523,13 +521,21 @@ function PostDetails() {
           "
         >
 
-          <ReactMarkdown
-            remarkPlugins={[
-              remarkGfm,
-            ]}
-          >
-            {post.content}
-          </ReactMarkdown>
+          <div
+  className="
+    prose
+    dark:prose-invert
+    max-w-none
+    prose-lg
+    prose-headings:font-bold
+    prose-img:rounded-2xl
+    prose-p:leading-8
+    prose-pre:bg-[#202020]
+  "
+  dangerouslySetInnerHTML={{
+    __html: post.content,
+  }}
+/>
 
         </div>
 

@@ -8,24 +8,55 @@ import {
   deletePost,
   getUserPosts,
   searchPosts,
+  getDraftPosts,
 } from "../controllers/postController.js";
+
 import {
   protect,
 } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
-router.get("/search", searchPosts);
+// SEARCH
+router.get(
+  "/search",
+  searchPosts
+);
 
-router.get("/my-posts", protect, getUserPosts);
+// DRAFTS
+router.get(
+  "/drafts",
+  protect,
+  getDraftPosts
+);
 
-router.route("/")
+// USER POSTS
+router.get(
+  "/my-posts",
+  protect,
+  getUserPosts
+);
+
+// ALL POSTS + CREATE
+router
+  .route("/")
   .get(getPosts)
-  .post(protect, createPost);
+  .post(
+    protect,
+    createPost
+  );
 
-router.route("/:id")
+// SINGLE POST
+router
+  .route("/:id")
   .get(getPost)
-  .put(protect, updatePost)
-  .delete(protect, deletePost);
+  .put(
+    protect,
+    updatePost
+  )
+  .delete(
+    protect,
+    deletePost
+  );
 
 export default router;
