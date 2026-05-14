@@ -552,12 +552,12 @@ function Home() {
             {
               icon: <ExternalLink size={19} />,
               link:
-                "https://linkedin.com",
+                "https://linkedin.com/in/kishorrj",
             },
             {
               icon: <Globe size={19} />,
               link:
-                "https://portfolio-rose-delta-62.vercel.app/",
+                "https://kishorrj.vercel.app/",
             },
           ].map((item, index) => (
 
